@@ -8,3 +8,13 @@
   border-radius: 100%;
   outline: 2px solid rgb(255, 255, 255);
 }
+
+.upgradeButton{
+  width: 200px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin: 10px 0 10px 0;
+  color: rgb(206, 206, 206);
+  background-color: transparent;
+}
