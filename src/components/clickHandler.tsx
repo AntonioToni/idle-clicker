@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import logo from '../assets/ClickerLogo.png';
-export function ClickHandler(params: {setBalance : any, balance : number}) {
+export function ClickHandler(params: {setBalance : any, balance : number, increment: number}) {
 
   function handleClick() {
-    params.setBalance(params.balance + 1);
+    params.setBalance(Math.round((params.balance + params.increment) * 10 ) / 10);
   }
 
   return(
