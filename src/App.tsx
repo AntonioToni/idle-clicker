@@ -11,15 +11,15 @@ export function App(){
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
-    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.1)]
+    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.01)]
   ]))
 
   useEffect(() => {
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
       setBalance(Math.round((balance + 
-        upgradeMap.current.get('autoClicker01')!.increment) * 10) / 10)
-    }, 1000);
+        upgradeMap.current.get('autoClicker01')!.increment) * 100) / 100)
+    }, 100);
     return () => clearInterval(interval);
   });
 
@@ -71,7 +71,7 @@ const upgradeInvocationHandler = (
 
   if (upgradeMap.current.get(id)!.upgrade(balance)) {
     console.log(`Upgraded ${id} component.`);
-    setBalance(Math.round((balance - cost) * 10) / 10);
+    setBalance(Math.round((balance - cost) * 100) / 100);
   } else {
     console.log(`Balance is too low to upgrade ${id} component.`)
   }

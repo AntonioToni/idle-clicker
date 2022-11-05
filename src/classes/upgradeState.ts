@@ -27,7 +27,7 @@ export default class UpgradeState {
     this._level += 1;
     this._currentCost = Math.ceil(this._currentCost * this._costMultiplier);
     //rounding due to floating-point arithmetic
-    this._increment = Math.round((this._increment + this._incrementUpgradeBy) * 10) / 10;
+    this._increment = Math.round((this._increment + this._incrementUpgradeBy) * 100) / 100;
     return true;
   }
 
