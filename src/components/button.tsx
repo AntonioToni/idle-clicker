@@ -1,18 +1,18 @@
 import React, { FunctionComponent } from "react";
 
-interface ButtonParams {
+interface ButtonProps {
   id: string;
   clickHandler: (id: string) => void;
   text: string;
 }
 
-const Button: FunctionComponent<ButtonParams> = (params: ButtonParams) => {
+const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
   return(
     <>
-      <button id={params.id} 
+      <button id={props.id} 
       className="upgradeButton"
-      onClick={() => {params.clickHandler(params.id)}}>
-        {params.text}
+      onClick={() => {props.clickHandler(props.id)}}>
+        {props.text}
       </button>
     </>
   )
