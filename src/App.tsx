@@ -11,14 +11,14 @@ export function App(){
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
-    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.01)]
+    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.1)]
   ]))
 
   useEffect(() => {
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
       setBalance(Math.round((balance + 
-        upgradeMap.current.get('autoClicker01')!.increment) * 100) / 100)
+        (upgradeMap.current.get('autoClicker01')!.increment / 10)) * 100) / 100)
     }, 100);
     return () => clearInterval(interval);
   });
