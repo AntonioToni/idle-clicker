@@ -19,7 +19,8 @@ export function App(){
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
       setBalance(Math.round((balance + 
-        (upgradeMap.current.get('autoClicker01')!.increment / 10)) * 100) / 100)
+        (upgradeMap.current.get('autoClicker01')!.increment / 10) +
+        (upgradeMap.current.get('autoClicker02')!.increment / 10)) * 100) / 100)
     }, 100);
     return () => clearInterval(interval);
   });
