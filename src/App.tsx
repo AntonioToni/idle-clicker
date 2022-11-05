@@ -15,12 +15,14 @@ export function App(){
     ['autoClicker02', new UpgradeState(100, 1.3, 0, 1)]
   ]))
 
+  let autoIncrement : number = Math.round(
+    (upgradeMap.current.get('autoClicker01')!.increment +
+    upgradeMap.current.get('autoClicker02')!.increment) * 100) / 100;
+
   useEffect(() => {
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
-      setBalance(Math.round((balance + 
-        (upgradeMap.current.get('autoClicker01')!.increment / 10) +
-        (upgradeMap.current.get('autoClicker02')!.increment / 10)) * 100) / 100)
+      setBalance(Math.round((balance + (autoIncrement / 10))* 100) / 100)
     }, 100);
     return () => clearInterval(interval);
   });
@@ -37,7 +39,7 @@ export function App(){
             />
             <DisplayStats balance = {balance} 
             clickIncrement = {upgradeMap.current.get('clickUpgrade')!.increment}
-            autoIncrement = {upgradeMap.current.get('autoClicker01')!.increment}
+            autoIncrement = {autoIncrement}
             />
           </div>
           <div className="col-sm">
