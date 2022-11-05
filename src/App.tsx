@@ -11,7 +11,8 @@ export function App(){
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
-    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.1)]
+    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.1)],
+    ['autoClicker02', new UpgradeState(100, 1.3, 0, 1)]
   ]))
 
   useEffect(() => {
@@ -52,6 +53,13 @@ export function App(){
             name="Auto Clicker 1"
             level={upgradeMap.current.get('autoClicker01')!.level}
             cost={upgradeMap.current.get('autoClicker01')!.currentCost}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            /> <br/>
+            <Button
+            id="autoClicker02"
+            name="Auto Clicker 2"
+            level={upgradeMap.current.get('autoClicker02')!.level}
+            cost={upgradeMap.current.get('autoClicker02')!.currentCost}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             />
           </div>
