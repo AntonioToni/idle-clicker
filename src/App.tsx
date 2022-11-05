@@ -31,8 +31,12 @@ export function App(){
             <ClickHandler 
             balance = {balance} 
             setBalance = {setBalance} 
-            increment= {upgradeMap.current.get('clickUpgrade')!.increment}/>
-            <DisplayStats balance = {balance}/>
+            increment = {upgradeMap.current.get('clickUpgrade')!.increment}
+            />
+            <DisplayStats balance = {balance} 
+            clickIncrement = {upgradeMap.current.get('clickUpgrade')!.increment}
+            autoIncrement = {upgradeMap.current.get('autoClicker01')!.increment}
+            />
           </div>
           <div className="col-sm">
             <h1>Upgrades</h1>
@@ -67,7 +71,7 @@ const upgradeInvocationHandler = (
 
   if (upgradeMap.current.get(id)!.upgrade(balance)) {
     console.log(`Upgraded ${id} component.`);
-    setBalance(balance - cost);
+    setBalance(Math.round((balance - cost) * 10) / 10);
   } else {
     console.log(`Balance is too low to upgrade ${id} component.`)
   }
