@@ -42,12 +42,16 @@ export function App(){
             <h1>Upgrades</h1>
             <Button
             id="clickUpgrade"
-            text="Main upgrade"
+            name="Main upgrade"
+            level={upgradeMap.current.get('clickUpgrade')!.level}
+            cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
             <Button
             id="autoClicker01"
-            text="Auto Clicker 1"
+            name="Auto Clicker 1"
+            level={upgradeMap.current.get('autoClicker01')!.level}
+            cost={upgradeMap.current.get('autoClicker01')!.currentCost}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             />
           </div>
