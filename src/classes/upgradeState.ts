@@ -46,4 +46,8 @@ export default class UpgradeState {
     return this._increment;
   }
 
+  public get incrementAdd() : number {
+    return this._incrementUpgradeBy;
+  }
+
 }

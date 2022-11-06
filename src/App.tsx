@@ -36,7 +36,7 @@ export function App(){
             <ClickHandler 
             balance = {balance} 
             setBalance = {setBalance} 
-            increment = {upgradeMap.current.get('clickUpgrade')!.increment}
+            increment = {upgradeMap.current.get('clickUpgrade')!.incrementAdd}
             />
             <DisplayStats balance = {balance} 
             clickIncrement = {upgradeMap.current.get('clickUpgrade')!.increment}
@@ -47,9 +47,10 @@ export function App(){
             <h1>Upgrades</h1>
             <Button
             id="clickUpgrade"
-            name="Main upgrade"
+            name="Click upgrade"
             level={upgradeMap.current.get('clickUpgrade')!.level}
             cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
+            increment={upgradeMap.current.get('clickUpgrade')!.incrementAdd}
             balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
@@ -58,6 +59,7 @@ export function App(){
             name="Auto Clicker 1"
             level={upgradeMap.current.get('autoClicker01')!.level}
             cost={upgradeMap.current.get('autoClicker01')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker01')!.incrementAdd}
             balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
@@ -67,6 +69,7 @@ export function App(){
               name="Auto Clicker 2"
               level={upgradeMap.current.get('autoClicker02')!.level}
               cost={upgradeMap.current.get('autoClicker02')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
               balance={balance}
               clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
               />
