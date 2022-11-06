@@ -1,17 +1,11 @@
-Simple clicker web app game. If you've ever played or heard of cookie clicker think of it as that just
-simpler.\
-Made in ReactJS with Typescript.
+# Idle Clicker
 
-## To start the project do:
+Simple Idle Clicker game made in ReactJS with Typescript.
 
-### `npm install`
+## Getting started
 
-Install all dependencies so you can start the app.
+#### 1. Clone this repository `git clone https://github.com/AntonioToni/idle-clicker`
 
-### `npm start`
+#### 2. `npm install` to install all required dependencies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### 3. `npm start` to start the application or `npm build` to create a production build.
