@@ -36,7 +36,7 @@ export function App(){
             <ClickHandler 
             balance = {balance} 
             setBalance = {setBalance} 
-            increment = {upgradeMap.current.get('clickUpgrade')!.incrementAdd}
+            increment = {upgradeMap.current.get('clickUpgrade')!.increment}
             />
             <DisplayStats balance = {balance} 
             clickIncrement = {upgradeMap.current.get('clickUpgrade')!.increment}
