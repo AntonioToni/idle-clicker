@@ -17,7 +17,8 @@ export function App(){
 
   let autoIncrement : number = Math.round(
     (upgradeMap.current.get('autoClicker01')!.increment +
-    upgradeMap.current.get('autoClicker02')!.increment) * 100) / 100;
+    upgradeMap.current.get('autoClicker02')!.increment
+    ) * 100) / 100;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,6 +50,7 @@ export function App(){
             name="Main upgrade"
             level={upgradeMap.current.get('clickUpgrade')!.level}
             cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
+            balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
             <Button
@@ -56,15 +58,19 @@ export function App(){
             name="Auto Clicker 1"
             level={upgradeMap.current.get('autoClicker01')!.level}
             cost={upgradeMap.current.get('autoClicker01')!.currentCost}
+            balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
-            <Button
-            id="autoClicker02"
-            name="Auto Clicker 2"
-            level={upgradeMap.current.get('autoClicker02')!.level}
-            cost={upgradeMap.current.get('autoClicker02')!.currentCost}
-            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-            />
+            <div>
+              <Button
+              id="autoClicker02"
+              name="Auto Clicker 2"
+              level={upgradeMap.current.get('autoClicker02')!.level}
+              cost={upgradeMap.current.get('autoClicker02')!.currentCost}
+              balance={balance}
+              clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+              />
+            </div>
           </div>
         </div>
       </div>

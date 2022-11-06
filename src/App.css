@@ -21,4 +21,29 @@ hr{
   margin: 10px 0 10px 0;
   color: rgb(206, 206, 206);
   background-color: transparent;
+  transition: background-color 300ms ease;
+}
+
+.upgradeButton:hover{
+  outline: 2px solid rgb(255, 255, 255);
+}
+
+.upgradeButtonDisabled{
+  background-color: rgb(114, 114, 114);
+}
+
+.upgradeButtonDisabled:hover{
+  cursor:not-allowed;
+  outline: none;
+}
+
+.hideUpgrade{
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.showUpgrade{
+  opacity: 1;
 }
