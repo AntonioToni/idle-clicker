@@ -9,3 +9,10 @@ Simple Idle Clicker game made in ReactJS with Typescript.
 #### 2. `npm install` to install all required dependencies.
 
 #### 3. `npm start` to start the application or `npm build` to create a production build.
+
+## Roadmap
+
+| Status | Description | 
+| :----: | :---------- |
+| ❌ | More Upgrades |
+| ❌ | Make Higher tier upgrades fade in |
