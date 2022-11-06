@@ -12,7 +12,4 @@ Simple Idle Clicker game made in ReactJS with Typescript.
 
 ## Roadmap
 
-| Status | Description | 
-| :----: | :---------- |
-| ❌ | More Upgrades |
-| ❌ | Make Higher tier upgrades fade in |
+https://github.com/users/AntonioToni/projects/2
