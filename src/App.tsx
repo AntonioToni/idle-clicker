@@ -11,13 +11,17 @@ export function App(){
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
-    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.1)],
-    ['autoClicker02', new UpgradeState(100, 1.3, 0, 1)]
+    ['autoClicker01', new UpgradeState(15, 1.15, 0, 0.1)],
+    ['autoClicker02', new UpgradeState(100, 1.15, 0, 1)],
+    ['autoClicker03', new UpgradeState(1100, 1.15, 0, 8)],
+    ['autoClicker04', new UpgradeState(12000, 1.15, 0, 45)]
   ]))
 
   let autoIncrement : number = Math.round(
     (upgradeMap.current.get('autoClicker01')!.increment +
-    upgradeMap.current.get('autoClicker02')!.increment
+    upgradeMap.current.get('autoClicker02')!.increment +
+    upgradeMap.current.get('autoClicker03')!.increment +
+    upgradeMap.current.get('autoClicker04')!.increment
     ) * 100) / 100;
 
   useEffect(() => {
@@ -63,17 +67,33 @@ export function App(){
             balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
-            <div>
-              <Button
-              id="autoClicker02"
-              name="Auto Clicker 2"
-              level={upgradeMap.current.get('autoClicker02')!.level}
-              cost={upgradeMap.current.get('autoClicker02')!.currentCost}
-              increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
-              balance={balance}
-              clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-              />
-            </div>
+            <Button
+            id="autoClicker02"
+            name="Auto Clicker 2"
+            level={upgradeMap.current.get('autoClicker02')!.level}
+            cost={upgradeMap.current.get('autoClicker02')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
+            balance={balance}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            /> <br/>
+            <Button
+            id="autoClicker03"
+            name="Auto Clicker 3"
+            level={upgradeMap.current.get('autoClicker03')!.level}
+            cost={upgradeMap.current.get('autoClicker03')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
+            balance={balance}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            /> <br/>
+            <Button
+            id="autoClicker04"
+            name="Auto Clicker 4"
+            level={upgradeMap.current.get('autoClicker04')!.level}
+            cost={upgradeMap.current.get('autoClicker04')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
+            balance={balance}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            />
           </div>
         </div>
       </div>
