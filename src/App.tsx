@@ -11,8 +11,9 @@ export function App(){
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
-    ['autoClicker01', new UpgradeState(20, 1.2, 0, 0.1)],
-    ['autoClicker02', new UpgradeState(100, 1.3, 0, 1)]
+    ['autoClicker01', new UpgradeState(15, 1.15, 0, 0.1)],
+    ['autoClicker02', new UpgradeState(100, 1.15, 0, 1)],
+    ['autoClicker03', new UpgradeState(1100, 1.15, 0, 8)]
   ]))
 
   let autoIncrement : number = Math.round(
@@ -63,17 +64,24 @@ export function App(){
             balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             /> <br/>
-            <div>
-              <Button
-              id="autoClicker02"
-              name="Auto Clicker 2"
-              level={upgradeMap.current.get('autoClicker02')!.level}
-              cost={upgradeMap.current.get('autoClicker02')!.currentCost}
-              increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
-              balance={balance}
-              clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-              />
-            </div>
+            <Button
+            id="autoClicker02"
+            name="Auto Clicker 2"
+            level={upgradeMap.current.get('autoClicker02')!.level}
+            cost={upgradeMap.current.get('autoClicker02')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
+            balance={balance}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            /> <br/>
+            <Button
+            id="autoClicker03"
+            name="Auto Clicker 3"
+            level={upgradeMap.current.get('autoClicker03')!.level}
+            cost={upgradeMap.current.get('autoClicker03')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
+            balance={balance}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            />
           </div>
         </div>
       </div>
