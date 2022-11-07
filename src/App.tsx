@@ -13,12 +13,15 @@ export function App(){
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
     ['autoClicker01', new UpgradeState(15, 1.15, 0, 0.1)],
     ['autoClicker02', new UpgradeState(100, 1.15, 0, 1)],
-    ['autoClicker03', new UpgradeState(1100, 1.15, 0, 8)]
+    ['autoClicker03', new UpgradeState(1100, 1.15, 0, 8)],
+    ['autoClicker04', new UpgradeState(12000, 1.15, 0, 45)]
   ]))
 
   let autoIncrement : number = Math.round(
     (upgradeMap.current.get('autoClicker01')!.increment +
-    upgradeMap.current.get('autoClicker02')!.increment
+    upgradeMap.current.get('autoClicker02')!.increment +
+    upgradeMap.current.get('autoClicker03')!.increment +
+    upgradeMap.current.get('autoClicker04')!.increment
     ) * 100) / 100;
 
   useEffect(() => {
@@ -79,6 +82,15 @@ export function App(){
             level={upgradeMap.current.get('autoClicker03')!.level}
             cost={upgradeMap.current.get('autoClicker03')!.currentCost}
             increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
+            balance={balance}
+            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+            /> <br/>
+            <Button
+            id="autoClicker04"
+            name="Auto Clicker 4"
+            level={upgradeMap.current.get('autoClicker04')!.level}
+            cost={upgradeMap.current.get('autoClicker04')!.currentCost}
+            increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
             balance={balance}
             clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
             />
