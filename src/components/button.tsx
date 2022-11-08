@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 
 interface ButtonProps {
   id: string;
@@ -14,14 +14,14 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  if (props.balance >= props.cost - 200) {
+  if (props.balance >= props.cost - 200 && isVisible) {
     setIsVisible(true);
   }
 
   return (
     <>
       <button
-        style={{display: isVisible ? "block" : "none"}} // not sure wether it should be block or something else
+        style={{ display: isVisible ? "block" : "none" }} // not sure wether it should be block or something else
         id={props.id}
         className={props.balance < props.cost ? "upgradeButton upgradeButtonDisabled" : "upgradeButton"}
         title={props.id !== "clickUpgrade" ? "Adds +" + props.increment.toString() + " to balance per second." :

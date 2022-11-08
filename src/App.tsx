@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import "./app.css"
+import "./App.css"
 import UpgradeState from "./classes/upgradeState";
 import Button from "./components/button";
 import { ClickHandler } from "./components/clickHandler";
