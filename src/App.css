@@ -22,8 +22,6 @@ hr{
   color: rgb(206, 206, 206);
   background-color: transparent;
   transition: 300ms ease;
-
-  display: inline-block;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
