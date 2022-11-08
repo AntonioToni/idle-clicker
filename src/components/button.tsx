@@ -21,7 +21,7 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
   return (
     <>
       <button
-        style={{ display: isVisible ? "inline-block" : "none" }} // not sure wether it should be block or something else
+        style={{ display: isVisible ? "inline-block" : "none" }}
         id={props.id}
         className={props.balance < props.cost ? "upgradeButton upgradeButtonDisabled" : "upgradeButton"}
         title={props.id !== "clickUpgrade" ? "Adds +" + props.increment.toString() + " to balance per second." :

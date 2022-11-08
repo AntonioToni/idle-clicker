@@ -21,7 +21,11 @@ hr{
   margin: 10px 0 10px 0;
   color: rgb(206, 206, 206);
   background-color: transparent;
-  transition: background-color 300ms ease;
+  transition: 300ms ease;
+
+  display: inline-block;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 
 .upgradeButton:hover{
@@ -37,13 +41,11 @@ hr{
   outline: none;
 }
 
-.hideUpgrade{
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
 }
-
-.showUpgrade{
-  opacity: 1;
+@keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
 }
