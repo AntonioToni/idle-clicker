@@ -6,7 +6,16 @@ import Button from "./components/button";
 import { ClickHandler } from "./components/clickHandler";
 import { DisplayStats } from "./components/displayStats";
 
-export function App(){
+export function App() {
+
+  /**
+   * balanceRef is actually tracking the balance amount.
+   * balance state is updated only each second.
+   * That way the number of re-renders is minimized.
+   * A negative byproduct is that the UI is almost never
+   * going to be in sync with the actual values.
+   */
+  const balanceRef = useRef({ value: 0 })
   const [balance, setBalance] = useState(0);
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
@@ -17,82 +26,87 @@ export function App(){
     ['autoClicker04', new UpgradeState(12000, 1.15, 0, 45)]
   ]))
 
-  let autoIncrement : number = Math.round(
+  let autoIncrement: number = Math.round(
     (upgradeMap.current.get('autoClicker01')!.increment +
-    upgradeMap.current.get('autoClicker02')!.increment +
-    upgradeMap.current.get('autoClicker03')!.increment +
-    upgradeMap.current.get('autoClicker04')!.increment
+      upgradeMap.current.get('autoClicker02')!.increment +
+      upgradeMap.current.get('autoClicker03')!.increment +
+      upgradeMap.current.get('autoClicker04')!.increment
     ) * 100) / 100;
 
   useEffect(() => {
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
-      setBalance(Math.round((balance + (autoIncrement / 10))* 100) / 100)
+
+      // TODO
+      // Modify balance state every interval, independent of everyting else.
+
+      balanceRef.current.value = Math.round((balanceRef.current.value + (autoIncrement / 10)) * 100) / 100;
+      setBalance(balanceRef.current.value);
     }, 100);
+
     return () => clearInterval(interval);
   });
 
-  return(
+  return (
     <>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm">
-            <ClickHandler 
-            balance = {balance} 
-            setBalance = {setBalance} 
-            increment = {upgradeMap.current.get('clickUpgrade')!.increment}
+            <ClickHandler
+              balanceRef={balanceRef}
+              increment={upgradeMap.current.get('clickUpgrade')!.increment}
             />
-            <DisplayStats balance = {balance} 
-            clickIncrement = {upgradeMap.current.get('clickUpgrade')!.increment}
-            autoIncrement = {autoIncrement}
+            <DisplayStats balance={balance}
+              clickIncrement={upgradeMap.current.get('clickUpgrade')!.increment}
+              autoIncrement={autoIncrement}
             />
           </div>
           <div className="col-sm">
             <h1>Upgrades</h1>
             <Button
-            id="clickUpgrade"
-            name="Click upgrade"
-            level={upgradeMap.current.get('clickUpgrade')!.level}
-            cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
-            increment={upgradeMap.current.get('clickUpgrade')!.incrementAdd}
-            balance={balance}
-            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-            /> <br/>
+              id="clickUpgrade"
+              name="Click upgrade"
+              level={upgradeMap.current.get('clickUpgrade')!.level}
+              cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
+              increment={upgradeMap.current.get('clickUpgrade')!.incrementAdd}
+              balance={balance}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            /> <br />
             <Button
-            id="autoClicker01"
-            name="Auto Clicker 1"
-            level={upgradeMap.current.get('autoClicker01')!.level}
-            cost={upgradeMap.current.get('autoClicker01')!.currentCost}
-            increment={upgradeMap.current.get('autoClicker01')!.incrementAdd}
-            balance={balance}
-            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-            /> <br/>
+              id="autoClicker01"
+              name="Auto Clicker 1"
+              level={upgradeMap.current.get('autoClicker01')!.level}
+              cost={upgradeMap.current.get('autoClicker01')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker01')!.incrementAdd}
+              balance={balance}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            /> <br />
             <Button
-            id="autoClicker02"
-            name="Auto Clicker 2"
-            level={upgradeMap.current.get('autoClicker02')!.level}
-            cost={upgradeMap.current.get('autoClicker02')!.currentCost}
-            increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
-            balance={balance}
-            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-            /> <br/>
+              id="autoClicker02"
+              name="Auto Clicker 2"
+              level={upgradeMap.current.get('autoClicker02')!.level}
+              cost={upgradeMap.current.get('autoClicker02')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
+              balance={balance}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            /> <br />
             <Button
-            id="autoClicker03"
-            name="Auto Clicker 3"
-            level={upgradeMap.current.get('autoClicker03')!.level}
-            cost={upgradeMap.current.get('autoClicker03')!.currentCost}
-            increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
-            balance={balance}
-            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
-            /> <br/>
+              id="autoClicker03"
+              name="Auto Clicker 3"
+              level={upgradeMap.current.get('autoClicker03')!.level}
+              cost={upgradeMap.current.get('autoClicker03')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
+              balance={balance}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            /> <br />
             <Button
-            id="autoClicker04"
-            name="Auto Clicker 4"
-            level={upgradeMap.current.get('autoClicker04')!.level}
-            cost={upgradeMap.current.get('autoClicker04')!.currentCost}
-            increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
-            balance={balance}
-            clickHandler={(id) => {upgradeInvocationHandler(id,balance,setBalance,upgradeMap);}}
+              id="autoClicker04"
+              name="Auto Clicker 4"
+              level={upgradeMap.current.get('autoClicker04')!.level}
+              cost={upgradeMap.current.get('autoClicker04')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
+              balance={balance}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             />
           </div>
         </div>
@@ -103,19 +117,18 @@ export function App(){
 
 const upgradeInvocationHandler = (
   id: string,
-  balance: number,
-  setBalance: React.Dispatch<React.SetStateAction<number>>,
-  upgradeMap: React.MutableRefObject<Map<string, UpgradeState>>
-) : void => {
+  upgradeMap: React.MutableRefObject<Map<string, UpgradeState>>,
+  balanceRef: React.MutableRefObject<{value: number;}>,
+): void => {
   if (!upgradeMap.current.has(id)) {
     return;
   }
 
   const cost = upgradeMap.current.get(id)!.currentCost;
 
-  if (upgradeMap.current.get(id)!.upgrade(balance)) {
+  if (upgradeMap.current.get(id)!.upgrade(balanceRef.current.value)) {
     console.log(`Upgraded ${id} component.`);
-    setBalance(Math.round((balance - cost) * 100) / 100);
+    balanceRef.current.value = Math.round((balanceRef.current.value - cost) * 100) / 100;
   } else {
     console.log(`Balance is too low to upgrade ${id} component.`)
   }
