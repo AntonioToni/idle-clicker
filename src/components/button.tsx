@@ -32,13 +32,17 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
         {props.name} <br /> <hr />
         Level: {props.level} | Cost: {props.cost}
       </button>
-      <span className="buttonDescText">
+      <span className={props.level === 0 ? "buttonDescText" : "buttonDescTextExpanded"}>
         {props.name} <br/>
         Owned: {props.level} <br/>
-        <hr />
-        {"Each " + props.name + " produces "} <b> {props.increment} balance </b> per second.<br/>
-        {props.level}  {props.name} producing  <b>{Math.round(props.level * props.increment * 10) / 10} balance </b> per second
-        {(props.autoIncrementTotal !== 0) ? " (" + Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 10) / 10 + "% of total BpS)" : ""}
+        <div style={{display: props.level === 0 ? "none": "inline-block"}}>
+          <hr />
+          {"Each " + props.name + " produces "} <b> {props.increment} balance </b> per second.<br/>
+          {props.level}  {props.name} producing  <b>{Math.round(props.level * props.increment * 100) / 100} balance </b> per second (
+          {(props.autoIncrementTotal !== 0) ? 
+          <b> {Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 100) / 100}% </b> : 
+          <b>0%</b>} of total BpS)
+        </div>
       </span>
     </div>
   )
