@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useReducer } from "react";
 import "./App.css"
 import UpgradeState from "./classes/upgradeState";
 import Button from "./components/button";
@@ -12,10 +12,13 @@ export function App() {
     balanceRef is tracking the balance amount.
     balance is read only and is updated every 100ms.
     (by updating balance via setBalance whole page reloads
-    and updates all button stages)
+    and updates everything)
   */
   const balanceRef = useRef({ value: 0 })
-  const [balance, setBalance] = useState(0);
+  /**
+   * 
+   */
+  const forceUpdate = useReducer(x => x + 1, 0)[1];
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
     ['clickUpgrade', new UpgradeState(15, 1.1, 1, 0.1)],
@@ -36,7 +39,7 @@ export function App() {
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
       balanceRef.current.value = Math.round((balanceRef.current.value + (autoIncrement / 10)) * 100) / 100;
-      setBalance(balanceRef.current.value);
+      forceUpdate();
     }, 100);
 
     return () => clearInterval(interval);
@@ -65,7 +68,7 @@ export function App() {
               level={upgradeMap.current.get('clickUpgrade')!.level}
               cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
               increment={upgradeMap.current.get('clickUpgrade')!.incrementAdd}
-              balance={balance}
+              balance={balanceRef.current.value}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -74,7 +77,7 @@ export function App() {
               level={upgradeMap.current.get('autoClicker01')!.level}
               cost={upgradeMap.current.get('autoClicker01')!.currentCost}
               increment={upgradeMap.current.get('autoClicker01')!.incrementAdd}
-              balance={balance}
+              balance={balanceRef.current.value}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -83,7 +86,7 @@ export function App() {
               level={upgradeMap.current.get('autoClicker02')!.level}
               cost={upgradeMap.current.get('autoClicker02')!.currentCost}
               increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
-              balance={balance}
+              balance={balanceRef.current.value}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -92,7 +95,7 @@ export function App() {
               level={upgradeMap.current.get('autoClicker03')!.level}
               cost={upgradeMap.current.get('autoClicker03')!.currentCost}
               increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
-              balance={balance}
+              balance={balanceRef.current.value}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -101,7 +104,7 @@ export function App() {
               level={upgradeMap.current.get('autoClicker04')!.level}
               cost={upgradeMap.current.get('autoClicker04')!.currentCost}
               increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
-              balance={balance}
+              balance={balanceRef.current.value}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             />
           </div>

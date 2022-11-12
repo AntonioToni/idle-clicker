@@ -13,7 +13,7 @@ export function DisplayStats(props : {
     displayBalance and setDisplayBalance is used to keep
     displayed balanced updated every 10ms so user doesn't feel the UI lag.
     This will keep the app feeling instantaneous while in fact only this component
-    is reloaded every 10ms while App.tsx is only updated every 100ms. 
+    is reloaded every 10ms while the whole app is only updated every 100ms. 
   */
   const [displayBalance, setDisplayBalance] = useState(0);
   useEffect(() => {
