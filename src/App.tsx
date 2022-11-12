@@ -8,13 +8,12 @@ import { DisplayStats } from "./components/displayStats";
 
 export function App() {
 
-  /**
-   * balanceRef is actually tracking the balance amount.
-   * balance state is updated only each second.
-   * That way the number of re-renders is minimized.
-   * A negative byproduct is that the UI is almost never
-   * going to be in sync with the actual values.
-   */
+  /*
+    balanceRef is tracking the balance amount.
+    balance is read only and is updated every 100ms.
+    (by updating balance via setBalance whole page reloads
+    and updates all button stages)
+  */
   const balanceRef = useRef({ value: 0 })
   const [balance, setBalance] = useState(0);
 
@@ -36,10 +35,6 @@ export function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       console.log('Attempting to invoke autoClicker components.');
-
-      // TODO
-      // Modify balance state every interval, independent of everyting else.
-
       balanceRef.current.value = Math.round((balanceRef.current.value + (autoIncrement / 10)) * 100) / 100;
       setBalance(balanceRef.current.value);
     }, 100);
@@ -56,7 +51,8 @@ export function App() {
               balanceRef={balanceRef}
               increment={upgradeMap.current.get('clickUpgrade')!.increment}
             />
-            <DisplayStats balance={balance}
+            <DisplayStats 
+              balanceRef={balanceRef}
               clickIncrement={upgradeMap.current.get('clickUpgrade')!.increment}
               autoIncrement={autoIncrement}
             />
