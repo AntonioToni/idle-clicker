@@ -58,21 +58,13 @@ export function App() {
           <div className="col-sm">
             <h1>Upgrades</h1>
             <Button
-              id="clickUpgrade"
-              name="Click upgrade"
-              level={upgradeMap.current.get('clickUpgrade')!.level}
-              cost={upgradeMap.current.get('clickUpgrade')!.currentCost}
-              increment={upgradeMap.current.get('clickUpgrade')!.incrementAdd}
-              balance={balanceRef.current.value}
-              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
-            /> <br />
-            <Button
               id="autoClicker01"
               name="Auto Clicker 1"
               level={upgradeMap.current.get('autoClicker01')!.level}
               cost={upgradeMap.current.get('autoClicker01')!.currentCost}
               increment={upgradeMap.current.get('autoClicker01')!.incrementAdd}
               balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -82,6 +74,7 @@ export function App() {
               cost={upgradeMap.current.get('autoClicker02')!.currentCost}
               increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
               balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -91,6 +84,7 @@ export function App() {
               cost={upgradeMap.current.get('autoClicker03')!.currentCost}
               increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
               balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
             <Button
@@ -100,6 +94,7 @@ export function App() {
               cost={upgradeMap.current.get('autoClicker04')!.currentCost}
               increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
               balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             />
           </div>

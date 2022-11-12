@@ -8,6 +8,7 @@ interface ButtonProps {
   cost: number;
   balance: number;
   increment: number;
+  autoIncrementTotal: number;
 }
 
 const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
@@ -32,9 +33,13 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
         Level: {props.level} | Cost: {props.cost}
       </button>
       <span className="buttonDescText">
-        {props.id !== "clickUpgrade" ? "Adds +" + props.increment.toString() + " to balance per second." :
-          "Adds +" + props.increment.toString() + " to balance per click."
-        }</span>
+        {props.name} <br/>
+        Owned: {props.level} <br/>
+        <hr />
+        {"Each " + props.name + " adds " + props.increment + " to balance per second."}<br/>
+        {props.level + " " + props.name + " producing " + Math.round(props.level * props.increment * 10) / 10 + " balance per second "}
+        {props.autoIncrementTotal !== 0 ? "(" + Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 10) / 10 + "% of total BpS)" : ""}
+      </span>
     </div>
   )
 }

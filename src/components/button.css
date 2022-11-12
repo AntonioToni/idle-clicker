@@ -31,28 +31,20 @@
 
 .buttonDesc .buttonDescText {
   visibility: hidden;
-  width: 320px;
+  width: 460px;
+  font-size: 14px;
   background-color: rgb(7, 7, 7);
   color: rgb(255, 255, 255);
-  text-align: center;
+  text-align: left;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 10px;
   position: absolute;
   z-index: 1;
-  top: 29px;
+  top: -12px;
   right: 110%;
+  border: 1px solid rgb(255, 255, 255);
 }
 
-.buttonDesc .buttonDescText::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent rgb(7, 7, 7);
-}
 .buttonDesc:hover .buttonDescText {
   visibility: visible;
 }
