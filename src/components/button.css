@@ -23,3 +23,36 @@
   cursor:not-allowed;
   outline: none;
 }
+
+.buttonDesc {
+  position: relative;
+  display: inline-block;
+}
+
+.buttonDesc .buttonDescText {
+  visibility: hidden;
+  width: 320px;
+  background-color: rgb(7, 7, 7);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 29px;
+  right: 110%;
+}
+
+.buttonDesc .buttonDescText::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgb(7, 7, 7);
+}
+.buttonDesc:hover .buttonDescText {
+  visibility: visible;
+}
