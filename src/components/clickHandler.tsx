@@ -6,10 +6,11 @@ export function ClickHandler(props: {
 }) {
 
   function handleClick() {
-    /**
-     * Should not be using setBalance directly since it would force a re-render of the parent component (<App>)!
-     */
-    props.balanceRef.current.value = Math.round((props.balanceRef.current.value + props.increment) * 100 ) / 100
+    /*
+      Should not be using setBalance directly since 
+      it would force a re-render of the parent component (<App>)!
+    */
+    props.balanceRef.current.value = Math.round((props.balanceRef.current.value + props.increment) * 100 ) / 100;
   }
 
   return (
