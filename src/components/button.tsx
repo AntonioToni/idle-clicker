@@ -36,9 +36,9 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
         {props.name} <br/>
         Owned: {props.level} <br/>
         <hr />
-        {"Each " + props.name + " adds " + props.increment + " to balance per second."}<br/>
-        {props.level + " " + props.name + " producing " + Math.round(props.level * props.increment * 10) / 10 + " balance per second "}
-        {props.autoIncrementTotal !== 0 ? "(" + Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 10) / 10 + "% of total BpS)" : ""}
+        {"Each " + props.name + " produces "} <b> {props.increment} balance </b> per second.<br/>
+        {props.level}  {props.name} producing  <b>{Math.round(props.level * props.increment * 10) / 10} balance </b> per second
+        {(props.autoIncrementTotal !== 0) ? " (" + Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 10) / 10 + "% of total BpS)" : ""}
       </span>
     </div>
   )
