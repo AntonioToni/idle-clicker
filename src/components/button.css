@@ -1,0 +1,70 @@
+.upgradeButton{
+  width: 200px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin: 10px 0 10px 0;
+  color: rgb(206, 206, 206);
+  background-color: transparent;
+  transition: 300ms ease;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.upgradeButton:hover{
+  outline: 2px solid rgb(255, 255, 255);
+}
+
+.upgradeButtonDisabled{
+  background-color: rgb(114, 114, 114);
+}
+
+.upgradeButtonDisabled:hover{
+  cursor:not-allowed;
+  outline: none;
+}
+
+.buttonDesc{
+  position: relative;
+  display: inline-block;
+}
+
+.buttonDesc .buttonDescText{
+  visibility: hidden;
+  width: 200px;
+  font-size: 14px;
+  background-color: rgb(7, 7, 7);
+  color: rgb(255, 255, 255);
+  text-align: left;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 13px;
+  right: 110%;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.buttonDesc .buttonDescTextExpanded{
+  visibility: hidden;
+  width: 470px;
+  font-size: 14px;
+  background-color: rgb(7, 7, 7);
+  color: rgb(255, 255, 255);
+  text-align: left;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: -13px;
+  right: 110%;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.buttonDesc:hover .buttonDescText{
+  visibility: visible;
+}
+
+.buttonDesc:hover .buttonDescTextExpanded{
+  visibility: visible;
+}
