@@ -10,14 +10,9 @@ export function App() {
 
   /*
     balanceRef is tracking the balance amount.
-    balance is read only and is updated every 100ms.
-    (by updating balance via setBalance whole page reloads
-    and updates everything)
   */
   const balanceRef = useRef({ value: 0 })
-  /**
-   * 
-   */
+
   const forceUpdate = useReducer(x => x + 1, 0)[1];
 
   const upgradeMap = useRef(new Map<string, UpgradeState>([
