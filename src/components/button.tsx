@@ -32,7 +32,7 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
         {props.name} <br /> <hr />
         Level: {props.level} | Cost: {props.cost}
       </button>
-      <span className={props.level === 0 ? "buttonDescText" : "buttonDescTextExpanded"}>
+      <span className={props.level === 0 ? "buttonDescText" : "buttonDescText buttonDescTextExpanded"}>
         {props.name} <br/>
         Owned: {props.level} <br/>
         <div style={{display: props.level === 0 ? "none": "inline-block"}}>

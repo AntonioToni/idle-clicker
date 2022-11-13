@@ -46,25 +46,10 @@
 }
 
 .buttonDesc .buttonDescTextExpanded{
-  visibility: hidden;
   width: 470px;
-  font-size: 14px;
-  background-color: rgb(7, 7, 7);
-  color: rgb(255, 255, 255);
-  text-align: left;
-  border-radius: 10px;
-  padding: 10px;
-  position: absolute;
-  z-index: 1;
   top: -13px;
-  right: 110%;
-  border: 1px solid rgb(255, 255, 255);
 }
 
 .buttonDesc:hover .buttonDescText{
-  visibility: visible;
-}
-
-.buttonDesc:hover .buttonDescTextExpanded{
   visibility: visible;
 }
