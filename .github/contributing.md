@@ -11,7 +11,7 @@ Software for editing code, I recommend <a href="https://code.visualstudio.com/do
 
 # Cloning and setup
 
-```cmd
+```sh
 git clone https://github.com/AntonioToni/idle-clicker.git
 cd idle-clicker
 npm install
@@ -20,7 +20,7 @@ npm start
 
 # Building and deploying
 
-```cmd
+```sh
 npm run build
 npm install -g serve
 npx serve -s build
