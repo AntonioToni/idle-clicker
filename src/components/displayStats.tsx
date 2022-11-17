@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import './Stats.css';
+import './displayStats.css';
 
 export function DisplayStats(props : {
   clickIncrement : number, 

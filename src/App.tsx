@@ -2,16 +2,17 @@ import React from "react";
 import { useRef, useEffect, useReducer } from "react";
 import "./App.css"
 import UpgradeState from "./classes/upgradeState";
-import Button from "./components/button";
+import UpgradeButton from "./components/upgradeButton";
 import { ClickHandler } from "./components/clickHandler";
 import { DisplayStats } from "./components/displayStats";
+import { SaveGame } from "./components/saveGame";
 
 export function App() {
 
   /*
     balanceRef is tracking the balance amount.
   */
-  const balanceRef = useRef({ value: 0 })
+  const balanceRef = useRef({ value: 0 });
 
   const forceUpdate = useReducer(x => x + 1, 0)[1];
 
@@ -54,10 +55,14 @@ export function App() {
               clickIncrement={upgradeMap.current.get('clickUpgrade')!.increment}
               autoIncrement={autoIncrement}
             />
+            <SaveGame 
+              balanceRef={balanceRef}
+              upgradeMap={upgradeMap}
+            />
           </div>
           <div className="col-sm">
             <h1>Upgrades</h1>
-            <Button
+            <UpgradeButton
               id="autoClicker01"
               name="Auto Clicker 1"
               level={upgradeMap.current.get('autoClicker01')!.level}
@@ -67,7 +72,7 @@ export function App() {
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
-            <Button
+            <UpgradeButton
               id="autoClicker02"
               name="Auto Clicker 2"
               level={upgradeMap.current.get('autoClicker02')!.level}
@@ -77,7 +82,7 @@ export function App() {
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
-            <Button
+            <UpgradeButton
               id="autoClicker03"
               name="Auto Clicker 3"
               level={upgradeMap.current.get('autoClicker03')!.level}
@@ -87,7 +92,7 @@ export function App() {
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
             /> <br />
-            <Button
+            <UpgradeButton
               id="autoClicker04"
               name="Auto Clicker 4"
               level={upgradeMap.current.get('autoClicker04')!.level}
