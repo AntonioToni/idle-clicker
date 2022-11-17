@@ -35,14 +35,12 @@ export default class UpgradeState {
   }
 
   public loadUpgrade(level: number) {
-    if (level !== 0) { 
-      this._level = level;
-      this._currentCost = this._startingCost
-      for (let index = 0; index < level; index++) {
-        this._currentCost = Math.ceil(this._currentCost * this._costMultiplier)
-      }
-      this._increment = Math.round((this._startingIncrement + (this._incrementUpgradeBy * level)) * 100 ) / 100;
+    this._level = level;
+    this._currentCost = this._startingCost
+    for (let index = 0; index < level; index++) {
+      this._currentCost = Math.ceil(this._currentCost * this._costMultiplier)
     }
+    this._increment = Math.round((this._startingIncrement + (this._incrementUpgradeBy * level)) * 100 ) / 100;
   }
 
   //returns upgrade cost

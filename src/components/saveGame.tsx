@@ -19,10 +19,23 @@ export function SaveGame(props: {
     loadUpgrade('autoClicker03', parseInt(JSON.parse(localStorage.getItem("AC3Level") || '0')), props.upgradeMap)
     loadUpgrade('autoClicker04', parseInt(JSON.parse(localStorage.getItem("AC4Level") || '0')), props.upgradeMap)
   }
+  function wipeSave() {
+    props.balanceRef.current.value = parseInt(JSON.parse('0'));
+    loadUpgrade('autoClicker01', parseInt(JSON.parse('0')), props.upgradeMap);
+    loadUpgrade('autoClicker02', parseInt(JSON.parse('0')), props.upgradeMap);
+    loadUpgrade('autoClicker03', parseInt(JSON.parse('0')), props.upgradeMap);
+    loadUpgrade('autoClicker04', parseInt(JSON.parse('0')), props.upgradeMap);
+    localStorage.removeItem("balanceRef");
+    localStorage.removeItem("AC1Level");
+    localStorage.removeItem("AC2Level");
+    localStorage.removeItem("AC3Level");
+    localStorage.removeItem("AC4Level");
+  }
   return(
     <>
       <Button onClick={handleSave} style={{margin: "10px"}} variant="contained">Save</Button>
       <Button onClick={handleLoad} style={{margin: "10px"}} variant="contained">Load</Button>
+      <Button onClick={wipeSave} style={{margin: "10px"}} variant="contained" color="error">Wipe save</Button>
     </>
   )
 }
