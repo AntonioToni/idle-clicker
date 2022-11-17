@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import './button.css'
+import './upgradeButton.css'
 interface ButtonProps {
   id: string;
   clickHandler: (id: string) => void;
@@ -11,7 +11,7 @@ interface ButtonProps {
   autoIncrementTotal: number;
 }
 
-const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
+const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -48,4 +48,4 @@ const Button: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
   )
 }
 
-export default Button;
+export default UpgradeButton;
