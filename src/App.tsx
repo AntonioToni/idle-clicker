@@ -23,6 +23,16 @@ export function App() {
     ['autoClicker03', new UpgradeState(1100, 1.15, 0, 8)],
     ['autoClicker04', new UpgradeState(12000, 1.15, 0, 45)]
   ]))
+  useEffect(() => {
+    function handleLoad() {
+      balanceRef.current.value = parseInt(JSON.parse(localStorage.getItem("balanceRef") || '0'));
+      loadUpgrade('autoClicker01', parseInt(JSON.parse(localStorage.getItem("AC1Level") || '0')), upgradeMap)
+      loadUpgrade('autoClicker02', parseInt(JSON.parse(localStorage.getItem("AC2Level") || '0')), upgradeMap)
+      loadUpgrade('autoClicker03', parseInt(JSON.parse(localStorage.getItem("AC3Level") || '0')), upgradeMap)
+      loadUpgrade('autoClicker04', parseInt(JSON.parse(localStorage.getItem("AC4Level") || '0')), upgradeMap)
+    }
+    handleLoad()
+  }, []);
 
   let autoIncrement: number = Math.round(
     (upgradeMap.current.get('autoClicker01')!.increment +
@@ -126,4 +136,13 @@ const upgradeInvocationHandler = (
   } else {
     console.log(`Balance is too low to upgrade ${id} component.`)
   }
+}
+
+const loadUpgrade = (
+  id: string,
+  level: number,
+  upgradeMap: React.MutableRefObject<Map<string, UpgradeState>>,
+) : void => {
+  upgradeMap.current.get(id)!.loadUpgrade(level);
+  console.log('Upgrade loaded');
 }
