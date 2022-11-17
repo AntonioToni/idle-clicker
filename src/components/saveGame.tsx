@@ -34,9 +34,10 @@ export function SaveGame(props: {
     localStorage.removeItem("AC3Level");
     localStorage.removeItem("AC4Level");
   }
-  handleSave();
   return(
     <>
+      <Button onClick={handleSave} style={{margin: "10px"}} variant="contained">Save</Button>
+      <Button onClick={handleLoad} style={{margin: "10px"}} variant="contained">Load</Button> <br/>
       <Button onClick={wipeSave} size="small" style={{margin: "10px"}} variant="contained" color="error">Wipe save</Button>
     </>
   )
