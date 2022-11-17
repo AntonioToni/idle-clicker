@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import UpgradeState from "../classes/upgradeState";
-
+import { useEffect } from 'react';
 export function SaveGame(props: {
   balanceRef: React.MutableRefObject<{value: number;}>,
   upgradeMap: React.MutableRefObject<Map<string, UpgradeState>>,
@@ -19,6 +19,9 @@ export function SaveGame(props: {
     loadUpgrade('autoClicker03', parseInt(JSON.parse(localStorage.getItem("AC3Level") || '0')), props.upgradeMap)
     loadUpgrade('autoClicker04', parseInt(JSON.parse(localStorage.getItem("AC4Level") || '0')), props.upgradeMap)
   }
+  useEffect(() => {
+    handleLoad()
+  }, []);
   function wipeSave() {
     props.balanceRef.current.value = parseInt(JSON.parse('0'));
     loadUpgrade('autoClicker01', parseInt(JSON.parse('0')), props.upgradeMap);
