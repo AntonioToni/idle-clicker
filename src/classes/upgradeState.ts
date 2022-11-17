@@ -6,7 +6,8 @@ export default class UpgradeState {
 
   private _increment: number;
   private _incrementUpgradeBy: number;
-
+  private _startingCost: number;
+  private _startingIncrement: number;
   constructor(
     startingCost: number,
     costMultiplier: number,
@@ -14,8 +15,10 @@ export default class UpgradeState {
     incrementUpgrade: number
   ) {
     this._currentCost = startingCost;
+    this._startingCost = startingCost; //needed for loading game
     this._costMultiplier = costMultiplier;
     this._increment = startingIncrement;
+    this._startingIncrement = startingIncrement; //needed for loading game
     this._incrementUpgradeBy = incrementUpgrade;
   }
 
@@ -29,6 +32,17 @@ export default class UpgradeState {
     //rounding due to floating-point arithmetic
     this._increment = Math.round((this._increment + this._incrementUpgradeBy) * 100) / 100;
     return true;
+  }
+
+  public loadUpgrade(level: number) {
+    if (level !== 0) { 
+      this._level = level;
+      this._currentCost = this._startingCost
+      for (let index = 0; index < level; index++) {
+        this._currentCost = Math.ceil(this._currentCost * this._costMultiplier)
+      }
+      this._increment = Math.round((this._startingIncrement + (this._incrementUpgradeBy * level)) * 100 ) / 100;
+    }
   }
 
   //returns upgrade cost
