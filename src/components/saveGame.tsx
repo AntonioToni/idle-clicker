@@ -37,8 +37,8 @@ export function SaveGame(props: {
   return(
     <>
       <Button onClick={handleSave} style={{margin: "10px"}} variant="contained">Save</Button>
-      <Button onClick={handleLoad} style={{margin: "10px"}} variant="contained">Load</Button>
-      <Button onClick={wipeSave} style={{margin: "10px"}} variant="contained" color="error">Wipe save</Button>
+      <Button onClick={handleLoad} style={{margin: "10px"}} variant="contained">Load</Button><br/>
+      <Button onClick={wipeSave} size="small" style={{margin: "10px"}} variant="contained" color="error">Wipe save</Button>
     </>
   )
 }
