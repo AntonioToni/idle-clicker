@@ -1,4 +1,4 @@
-import { Button, Box, Typography, Modal, Popover } from '@mui/material';
+import { Button, Box, Typography, Modal } from '@mui/material';
 import UpgradeState from "../classes/upgradeState";
 import React, { useEffect, useRef } from 'react';
 
