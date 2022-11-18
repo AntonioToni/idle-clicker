@@ -1,4 +1,4 @@
-import { Button, Box, Typography, Modal } from '@mui/material';
+import { Button, Box, Typography, Modal, Popover } from '@mui/material';
 import UpgradeState from "../classes/upgradeState";
 import React, { useEffect, useRef } from 'react';
 
@@ -24,7 +24,8 @@ export function SaveGame(props: {
     localStorage.setItem("AC2Level", JSON.stringify(props.upgradeMap.current.get('autoClicker02')!.level))
     localStorage.setItem("AC3Level", JSON.stringify(props.upgradeMap.current.get('autoClicker03')!.level))
     localStorage.setItem("AC4Level", JSON.stringify(props.upgradeMap.current.get('autoClicker04')!.level))
-    console.log("Game saved")
+    console.log("Game saved");
+    //TODO add pop-up or popover confirming save
   }
   function handleLoad() {
     props.balanceRef.current.value = parseInt(JSON.parse(localStorage.getItem("balanceRef") || '0'));
@@ -32,11 +33,11 @@ export function SaveGame(props: {
     loadUpgrade('autoClicker02', parseInt(JSON.parse(localStorage.getItem("AC2Level") || '0')), props.upgradeMap)
     loadUpgrade('autoClicker03', parseInt(JSON.parse(localStorage.getItem("AC3Level") || '0')), props.upgradeMap)
     loadUpgrade('autoClicker04', parseInt(JSON.parse(localStorage.getItem("AC4Level") || '0')), props.upgradeMap)
-    console.log("Game loaded")
+    console.log("Game loaded");
   }
 
   useEffect(() => { //loads latest save on app startup
-    handleLoad()
+    handleLoad();
   }, []);
   /*
     Game is autosaved every 1 minute to increase
@@ -48,7 +49,6 @@ export function SaveGame(props: {
   if (counter.current.value >= 1400) {
     handleSave();
     counter.current.value=0;
-    //TODO ADD popup saying game saved
   }
 
   function wipeSave() {
@@ -64,13 +64,13 @@ export function SaveGame(props: {
     localStorage.removeItem("AC4Level");
     console.log("Game wiped");
     handleClose();
-    //TODO add confirmation popup
   }
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return(
     <>
+      <Button onClick={handleSave} style={{margin: "10px 10px 30px 10px"}} variant="contained">Save</Button> <br/>
       <Button onClick={handleOpen} size="small" style={{margin: "10px"}} variant="contained" color="error">Wipe save</Button>
       <Modal
         open={open}
