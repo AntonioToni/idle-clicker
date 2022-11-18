@@ -38,6 +38,7 @@ export function SaveGame(props: {
 
   useEffect(() => { //loads latest save on app startup
     handleLoad();
+    // eslint-disable-next-line
   }, []);
   /*
     Game is autosaved every 1 minute to increase
