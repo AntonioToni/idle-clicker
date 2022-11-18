@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { FunctionComponent, useState } from "react";
 import './upgradeButton.css'
 interface ButtonProps {
@@ -15,23 +16,22 @@ const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  if (props.balance >= props.cost - 200 && !isVisible) {
+  if (props.balance >= props.cost - Math.max(200, props.cost * 0.1) && !isVisible) {
     setIsVisible(true);
   }
 
   return (
     <div className="buttonDesc">
-      <button
-        type="button"
-        style={{ display: isVisible ? "inline-block" : "none" }}
+      <Button
+        variant="outlined"
+        style={{ display: isVisible ? "inline-block" : "none" , margin: "10px"}}
         id={props.id}
-        data-toggle="tooltip"
-        data-placement="left"
-        className={props.balance < props.cost ? "upgradeButton upgradeButtonDisabled" : "upgradeButton"}
+        disabled={props.balance < props.cost ? true : false}
+        className="upgradeButton"
         onClick={() => { props.clickHandler(props.id) }}>
         {props.name} <br /> <hr />
         Level: {props.level} | Cost: {props.cost}
-      </button>
+      </Button>
       <span className={props.level === 0 ? "buttonDescText" : "buttonDescText buttonDescTextExpanded"}>
         {props.name} <br/>
         Owned: {props.level} <br/>
