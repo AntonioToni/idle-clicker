@@ -5,18 +5,14 @@
   animation: fadeIn 1s;
 }
 
-.upgradeButton:hover{
-  outline: 2px solid rgb(255, 255, 255);
-}
-
 .buttonDesc{
   position: relative;
   display: inline-block;
 }
 
 .MuiButtonBase-root:disabled {
-  background-color: rgba(197, 0, 0, 0.425);
-  color: 'warning';
+  background-color: rgb(114, 114, 114);
+  color: rgb(255, 255, 255);
 }
 
 .buttonDesc .buttonDescText{

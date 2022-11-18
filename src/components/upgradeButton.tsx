@@ -12,6 +12,24 @@ interface ButtonProps {
   autoIncrementTotal: number;
 }
 
+const buttonSX = {
+  "&:hover":{
+    borderColor: 'rgb(255,255,255)',
+    outline: '1px solid rgb(255,255,255)',
+    backgroundColor: 'rgba(60, 60, 60, 0.1)',
+  },
+  "&:disabled":{
+    color: 'rgb(185,185,185)',
+  },
+  "&:disabled:hover":{
+    PointerEvent: 'auto',
+    cursor: 'not-allowed'
+  },
+  color: 'rgb(255,255,255)',
+  borderColor: 'rgb(223,223,223)',
+  padding: '5px 0 5px 0'
+}
+
 const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
 
   const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +42,7 @@ const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
     <div className="buttonDesc">
       <Button
         variant="outlined"
+        sx={buttonSX}
         style={{ display: isVisible ? "inline-block" : "none" , margin: "10px"}}
         id={props.id}
         disabled={props.balance < props.cost ? true : false}
