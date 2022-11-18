@@ -127,12 +127,3 @@ const upgradeInvocationHandler = (
     console.log(`Balance is too low to upgrade ${id} component.`)
   }
 }
-
-const loadUpgrade = (
-  id: string,
-  level: number,
-  upgradeMap: React.MutableRefObject<Map<string, UpgradeState>>,
-) : void => {
-  upgradeMap.current.get(id)!.loadUpgrade(level);
-  console.log('Upgrade loaded');
-}
