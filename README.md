@@ -4,6 +4,8 @@ Simple Idle Clicker game made in ReactJS with Typescript.
 
 ## Getting started
 
+Prerequisite: Node Package Manager (npm) download can be found <a href="https://nodejs.org/en/download/">here<a/>.
+
 1. Clone this repository `git clone https://github.com/AntonioToni/idle-clicker`
 
 2. `npm install` to install all required dependencies.
@@ -17,7 +19,7 @@ There you can find upcoming features, bugs that need fixing or planned changes.
 
 ## Building and deploying
 
-```cmd
+```sh
 npm run build
 npm install -g serve
 npx serve -s build
