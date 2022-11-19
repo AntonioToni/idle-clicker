@@ -63,7 +63,9 @@ export function SaveGame(props: {
     localStorage.removeItem("AC2Level");
     localStorage.removeItem("AC3Level");
     localStorage.removeItem("AC4Level");
+    props.balanceRef.current.value = parseInt(JSON.parse('0'));
     console.log("Game wiped");
+    window.location.reload();
     handleClose();
   }
   const [open, setOpen] = React.useState(false);
