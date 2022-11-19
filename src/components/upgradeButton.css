@@ -14,28 +14,3 @@
   background-color: rgb(114, 114, 114);
   color: rgb(255, 255, 255);
 }
-
-.buttonDesc .buttonDescText{
-  visibility: hidden;
-  width: 200px;
-  font-size: 14px;
-  background-color: rgb(7, 7, 7);
-  color: rgb(255, 255, 255);
-  text-align: left;
-  border-radius: 10px;
-  padding: 10px;
-  position: absolute;
-  z-index: 1;
-  top: 13px;
-  right: 110%;
-  border: 1px solid rgb(255, 255, 255);
-}
-
-.buttonDesc .buttonDescTextExpanded{
-  width: 470px;
-  top: -13px;
-}
-
-.buttonDesc:hover .buttonDescText{
-  visibility: visible;
-}
