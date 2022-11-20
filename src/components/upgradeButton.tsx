@@ -3,6 +3,7 @@ import React, { FunctionComponent, useState } from "react";
 import { styled } from '@mui/material/styles';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import {isMobile} from 'react-device-detect';
 import './upgradeButton.css'
 interface ButtonProps {
   id: string;
@@ -56,36 +57,36 @@ const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
   }
 
   return (
-    <HtmlTooltip placement='left' title={
-      <>
-        <Typography variant="body2" align="left">
-          {props.name} <br/>
-          Owned: {props.level} <br/>
-          <div style={{display: props.level === 0 ? "none": "inline-block"}}>
-            <hr />
-            {"Each " + props.name + " produces "} <b> {props.increment} balance </b> per second.<br/>
-            {props.level}  {props.name} producing  <b>{Math.round(props.level * props.increment * 100) / 100} balance </b> per second (
-            {(props.autoIncrementTotal !== 0) ? 
-            <b> {Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 100) / 100}% </b> : 
-            <b>0%</b>} of total BpS)
-          </div>
-        </Typography>
-      </>
-    }>
-      <span style={{height: "70px", display: "inline-block", margin: "10px", padding: '0'}}>
-        <Button
-          variant="outlined"
-          sx={buttonSX}
-          style={{ display: isVisible ? "inline-block" : "none"}}
-          id={props.id}
-          disabled={props.balance < props.cost ? true : false}
-          className="upgradeButton"
-          onClick={() => { props.clickHandler(props.id) }}>
-          {props.name} <br /> <hr />
-          Level: {props.level} | Cost: {props.cost}
-        </Button>
-      </span>
-    </HtmlTooltip>
+    <div>
+      <HtmlTooltip placement={isMobile ? 'bottom' : 'left'} title={
+          <Typography variant="body2" align="left">
+            {props.name} <br/>
+            Owned: {props.level} <br/>
+            <div style={{display: props.level === 0 ? "none": "inline-block"}}>
+              <hr />
+              {"Each " + props.name + " produces "} <b> {props.increment} balance </b> per second.<br/>
+              {props.level}  {props.name} producing  <b>{Math.round(props.level * props.increment * 100) / 100} balance </b> per second (
+              {(props.autoIncrementTotal !== 0) ? 
+              <b> {Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 100) / 100}% </b> : 
+              <b>0%</b>} of total BpS)
+            </div>
+          </Typography>
+      }>
+        <span style={{height: "70px", display: "inline-block", margin: "10px", padding: '0'}}>
+          <Button
+            variant="outlined"
+            sx={buttonSX}
+            style={{ display: isVisible ? "inline-block" : "none"}}
+            id={props.id}
+            disabled={props.balance < props.cost ? true : false}
+            className="upgradeButton"
+            onClick={() => { props.clickHandler(props.id) }}>
+            {props.name} <br /> <hr />
+            Level: {props.level} | Cost: {props.cost}
+          </Button>
+        </span>
+      </HtmlTooltip>
+    </div>
   )
 }
 

@@ -71,7 +71,7 @@ export function App() {
               balance={balanceRef.current.value}
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
-            /> <br />
+            /> 
             <UpgradeButton
               id="autoClicker02"
               name="Auto Clicker 2"
@@ -81,7 +81,7 @@ export function App() {
               balance={balanceRef.current.value}
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
-            /> <br />
+            /> 
             <UpgradeButton
               id="autoClicker03"
               name="Auto Clicker 3"
@@ -91,7 +91,7 @@ export function App() {
               balance={balanceRef.current.value}
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
-            /> <br />
+            /> 
             <UpgradeButton
               id="autoClicker04"
               name="Auto Clicker 4"
