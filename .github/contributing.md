@@ -7,6 +7,8 @@ how to ensure this project is managed well are included below.
 
 <a href="https://git-scm.com/downloads">git</a>
 
+<a href="https://nodejs.org/en/download/">Node package manager (npm)<a/>
+
 Software for editing code, I recommend <a href="https://code.visualstudio.com/download">Visual Studio Code</a>
 
 # Cloning and setup
