@@ -56,6 +56,20 @@ const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
     setIsVisible(true);
   }
 
+  function addcomma(x:any) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  }
+  const formatNumber = (n: number) => {
+    if (n < 1e6) return n;
+    if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + "M";
+    if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + "G";
+    if (n >= 1e12 && n < 1e15) return +(n / 1e12).toFixed(1) + "T";
+    if (n >= 1e15 && n < 1e18) return +(n / 1e15).toFixed(1) + "P";
+    if (n >= 1e18 && n < 1e21) return +(n / 1e18).toFixed(1) + "E";
+    if (n >= 1e21 && n < 1e24) return +(n / 1e21).toFixed(1) + "Z";
+    if (n >= 1e24) return +(n / 1e24).toFixed(1) + "Y";
+  };
+
   return (
     <div>
       <HtmlTooltip placement={isMobile ? 'bottom' : 'left'} title={
@@ -82,7 +96,7 @@ const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
             className="upgradeButton"
             onClick={() => { props.clickHandler(props.id) }}>
             {props.name} <br /> <hr />
-            Level: {props.level} | Cost: {props.cost}
+            Level: {props.level} | Cost: {addcomma(formatNumber(props.cost))}
           </Button>
         </span>
       </HtmlTooltip>
@@ -91,18 +105,3 @@ const UpgradeButton: FunctionComponent<ButtonProps> = (props: ButtonProps) => {
 }
 
 export default UpgradeButton;
-
-/*
-      <span className={props.level === 0 ? "buttonDescText" : "buttonDescText buttonDescTextExpanded"}>
-        {props.name} <br/>
-        Owned: {props.level} <br/>
-        <div style={{display: props.level === 0 ? "none": "inline-block"}}>
-          <hr />
-          {"Each " + props.name + " produces "} <b> {props.increment} balance </b> per second.<br/>
-          {props.level}  {props.name} producing  <b>{Math.round(props.level * props.increment * 100) / 100} balance </b> per second (
-          {(props.autoIncrementTotal !== 0) ? 
-          <b> {Math.round(props.level * props.increment / props.autoIncrementTotal * 100 * 100) / 100}% </b> : 
-          <b>0%</b>} of total BpS)
-        </div>
-      </span>
-*/
