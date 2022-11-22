@@ -9,7 +9,7 @@ how to ensure this project is managed well are included below.
 
 <a href="https://nodejs.org/en/download/">Node package manager (npm)<a/>
 
-Software for editing code, I recommend <a href="https://code.visualstudio.com/download">Visual Studio Code</a>
+Code editor or IDE, I recommend <a href="https://code.visualstudio.com/download">Visual Studio Code</a>.
 
 # Cloning and setup
 
@@ -38,7 +38,7 @@ Feel free to take a look at the <a href="https://github.com/users/AntonioToni/pr
 
 # Testing the project
 
-If changes are made they should always be tested to make sute they work as intended and do not conflict with other systems.
+If changes are made they should always be tested to make sure they work as intended and do not conflict with other systems.
 
 # Pull Requests
 
