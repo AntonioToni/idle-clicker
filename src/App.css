@@ -3,14 +3,14 @@ hr{
 }
 
 .logoImg{
-  width: 200px;
+  width: 204px;
+  border: 2px solid rgba(255, 255, 255, 0);
 }
 
 .logoImg:hover{
   cursor: pointer;
-  width: 200px;
-  border-radius: 100%;
-  outline: 2px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 @-webkit-keyframes fadeIn {
