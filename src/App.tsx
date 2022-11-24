@@ -28,10 +28,13 @@ export function App() {
   ]))
 
   let autoIncrement: number = Math.round(
-    (upgradeMap.current.get('autoClicker01')!.increment +
+    ( upgradeMap.current.get('autoClicker01')!.increment +
       upgradeMap.current.get('autoClicker02')!.increment +
       upgradeMap.current.get('autoClicker03')!.increment +
-      upgradeMap.current.get('autoClicker04')!.increment
+      upgradeMap.current.get('autoClicker04')!.increment +
+      upgradeMap.current.get('autoClicker05')!.increment +
+      upgradeMap.current.get('autoClicker06')!.increment +
+      upgradeMap.current.get('autoClicker07')!.increment
     ) * 100) / 100;
 
   useEffect(() => {
