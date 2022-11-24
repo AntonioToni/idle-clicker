@@ -21,7 +21,10 @@ export function App() {
     ['autoClicker01', new UpgradeState(15, 1.15, 0, 0.1)],
     ['autoClicker02', new UpgradeState(100, 1.15, 0, 1)],
     ['autoClicker03', new UpgradeState(1100, 1.15, 0, 8)],
-    ['autoClicker04', new UpgradeState(12000, 1.15, 0, 45)]
+    ['autoClicker04', new UpgradeState(12000, 1.15, 0, 45)],
+    ['autoClicker05', new UpgradeState(130000, 1.15, 0, 250)],
+    ['autoClicker06', new UpgradeState(1400000, 1.15, 0, 1380)],
+    ['autoClicker07', new UpgradeState(15000000, 1.15, 0 , 7600)],
   ]))
 
   let autoIncrement: number = Math.round(
@@ -64,7 +67,7 @@ export function App() {
             <h1>Upgrades</h1>
             <UpgradeButton
               id="autoClicker01"
-              name="Auto Clicker 1"
+              name="Student"
               level={upgradeMap.current.get('autoClicker01')!.level}
               cost={upgradeMap.current.get('autoClicker01')!.currentCost}
               increment={upgradeMap.current.get('autoClicker01')!.incrementAdd}
@@ -74,7 +77,7 @@ export function App() {
             /> 
             <UpgradeButton
               id="autoClicker02"
-              name="Auto Clicker 2"
+              name="Junior developer"
               level={upgradeMap.current.get('autoClicker02')!.level}
               cost={upgradeMap.current.get('autoClicker02')!.currentCost}
               increment={upgradeMap.current.get('autoClicker02')!.incrementAdd}
@@ -84,7 +87,7 @@ export function App() {
             /> 
             <UpgradeButton
               id="autoClicker03"
-              name="Auto Clicker 3"
+              name="Senior developer"
               level={upgradeMap.current.get('autoClicker03')!.level}
               cost={upgradeMap.current.get('autoClicker03')!.currentCost}
               increment={upgradeMap.current.get('autoClicker03')!.incrementAdd}
@@ -94,10 +97,40 @@ export function App() {
             /> 
             <UpgradeButton
               id="autoClicker04"
-              name="Auto Clicker 4"
+              name="Manager"
               level={upgradeMap.current.get('autoClicker04')!.level}
               cost={upgradeMap.current.get('autoClicker04')!.currentCost}
               increment={upgradeMap.current.get('autoClicker04')!.incrementAdd}
+              balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            />
+            <UpgradeButton
+              id="autoClicker05"
+              name="Chief technical officer"
+              level={upgradeMap.current.get('autoClicker05')!.level}
+              cost={upgradeMap.current.get('autoClicker05')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker05')!.incrementAdd}
+              balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            />
+            <UpgradeButton
+              id="autoClicker06"
+              name="Chief executive officer"
+              level={upgradeMap.current.get('autoClicker06')!.level}
+              cost={upgradeMap.current.get('autoClicker06')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker06')!.incrementAdd}
+              balance={balanceRef.current.value}
+              autoIncrementTotal={autoIncrement}
+              clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
+            />
+            <UpgradeButton
+              id="autoClicker07"
+              name="Doomer"
+              level={upgradeMap.current.get('autoClicker07')!.level}
+              cost={upgradeMap.current.get('autoClicker07')!.currentCost}
+              increment={upgradeMap.current.get('autoClicker07')!.incrementAdd}
               balance={balanceRef.current.value}
               autoIncrementTotal={autoIncrement}
               clickHandler={(id) => { upgradeInvocationHandler(id, upgradeMap, balanceRef); }}
