@@ -30,3 +30,7 @@ More methods of deploying the App can be found <a href="https://create-react-app
 
 If you would like to contribute to the project, see <a href="https://github.com/AntonioToni/idle-clicker/blob/master/.github/contributing.md">Contributing.md</a>\
 Make sure to check the <a href="https://github.com/users/AntonioToni/projects/2">roadmap<a/> and <a href="https://github.com/AntonioToni/idle-clicker/issues"> issue tracker</a>.
+
+## Screenshots
+  ![image](https://user-images.githubusercontent.com/21955586/204166040-14f9fb54-7159-40f4-8408-44c8b8ac580f.png)
+![image](https://user-images.githubusercontent.com/21955586/204166118-51ed6d4c-7e54-418a-b225-d753348ec7bb.png)
