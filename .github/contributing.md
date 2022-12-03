@@ -5,6 +5,8 @@ how to ensure this project is managed well are included below.
 
 # Required software
 
+<a href="https://nodejs.org/en/download/">npm</a>
+
 <a href="https://git-scm.com/downloads">git</a>
 
 <a href="https://nodejs.org/en/download/">Node package manager (npm)<a/>
