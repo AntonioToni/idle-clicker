@@ -38,7 +38,6 @@ export function DisplayStats(props : {
   return(
     <div className="stats">
       <h1>Balance: {addcomma(formatNumber(Math.trunc(displayBalance)))}</h1>
-      <h4>per click: {props.clickIncrement}</h4>
       <h4>per second: {addcomma(formatNumber(props.autoIncrement))}</h4>
     </div>
   )
