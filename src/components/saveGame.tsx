@@ -1,4 +1,4 @@
-import { Button, Box, Typography, Modal } from '@mui/material';
+import { Button, Box, Typography, Modal, Snackbar } from '@mui/material';
 import UpgradeState from "../classes/upgradeState";
 import React, { useEffect, useRef } from 'react';
 
@@ -18,6 +18,7 @@ export function SaveGame(props: {
   balanceRef: React.MutableRefObject<{value: number;}>,
   upgradeMap: React.MutableRefObject<Map<string, UpgradeState>>,
 }) {
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
   function handleSave() {
     localStorage.setItem("balanceRef", JSON.stringify(props.balanceRef.current.value));
     localStorage.setItem("AC1Level", JSON.stringify(props.upgradeMap.current.get('autoClicker01')!.level))
@@ -25,7 +26,7 @@ export function SaveGame(props: {
     localStorage.setItem("AC3Level", JSON.stringify(props.upgradeMap.current.get('autoClicker03')!.level))
     localStorage.setItem("AC4Level", JSON.stringify(props.upgradeMap.current.get('autoClicker04')!.level))
     console.log("Game saved");
-    //TODO add pop-up or popover confirming save
+    setOpenSnackbar(true);
   }
   function handleLoad() {
     props.balanceRef.current.value = parseInt(JSON.parse(localStorage.getItem("balanceRef") || '0'));
@@ -71,6 +72,14 @@ export function SaveGame(props: {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleCloseSnackbar = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
   return(
     <>
       <Button onClick={handleSave} style={{margin: "10px 10px 30px 10px"}} variant="contained">Save</Button> <br/>
@@ -95,6 +104,12 @@ export function SaveGame(props: {
           <Button onClick={handleClose}>No</Button>
         </Box>
       </Modal>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={2000}
+        onClose={handleCloseSnackbar}
+        message="Game saved"
+      />
     </>
   )
 }
